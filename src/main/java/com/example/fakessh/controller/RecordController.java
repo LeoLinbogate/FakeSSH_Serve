@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 
@@ -27,18 +28,23 @@ public class RecordController {
         this.recordService = recordService;
     }
 
-//    @GetMapping("/records")
+    //    @GetMapping("/records")
 //    public IPage<FakeSSHRecord> getRecords(@RequestParam(value = "page", defaultValue = "1") int currentPage) {
 //        // 调用服务层获取分页数据
 //        return recordService.getRecordsWithPagination(currentPage);
 //    }
-@GetMapping("/records")
-public IPage<FakeSSHRecord> getRecords(  @RequestParam(value = "page" ,defaultValue = "1") int currentPage,
-                                         @RequestParam(value = "size", defaultValue = "100") int size,
-                                         @DateTimeFormat(pattern = "yyyy/MM/dd")
-                                         @RequestParam(value = "startDate", defaultValue = "2000/01/01") LocalDate startDate,
-                                         @DateTimeFormat(pattern = "yyyy/MM/dd")
-                                         @RequestParam(value = "endDate",  defaultValue = "2099/12/31") LocalDate endDate) {
-    return recordService.getRecordsWithPagination(currentPage,size,startDate,endDate);
-}
+    @GetMapping("/records")
+    public IPage<FakeSSHRecord> getRecords(@RequestParam(value = "page", defaultValue = "1") int currentPage,
+                                           @RequestParam(value = "size", defaultValue = "100") int size,
+                                           @DateTimeFormat(pattern = "yyyy/MM/dd")
+                                           @RequestParam(value = "startDate", defaultValue = "2000/01/01") LocalDate startDate,
+                                           @DateTimeFormat(pattern = "yyyy/MM/dd")
+                                           @RequestParam(value = "endDate", defaultValue = "2099/12/31") LocalDate endDate) {
+        return recordService.getRecordsWithPagination(currentPage, size, startDate, endDate);
+    }
+
+    @GetMapping("/getfournum")
+    public Map<String ,Integer> getFourNum(){
+        return recordService.getFourIntegers();
+    }
 }
