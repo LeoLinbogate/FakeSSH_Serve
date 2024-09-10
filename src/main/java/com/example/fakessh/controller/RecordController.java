@@ -47,4 +47,8 @@ public class RecordController {
     public Map<String ,Integer> getFourNum(){
         return recordService.getFourIntegers();
     }
+    @GetMapping("/gettoptenaddrs")
+    public Map<String ,List<Map<String,Object>>> getTopTenAddrs(){
+       return recordService.getTopten();
+    }
 }

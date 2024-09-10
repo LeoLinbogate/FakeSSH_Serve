@@ -7,7 +7,9 @@ import com.example.fakessh.mapper.RecordMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -33,6 +35,19 @@ public class RecordService {
         // 返回分页结果
         return resultPage;
     }
+
+
+    public Map<String ,List<Map<String,Object>>> getTopten(){
+        List<Map<String,Object>> addrTopTen =  recordMapper.addrTopTen();
+        List<Map<String,Object>> userTopTen = recordMapper.userTopTen();
+        List<Map<String,Object>> passTopTen = recordMapper.passTopTen();
+        Map<String, List<Map<String,Object>>> resultMap = new HashMap<>();
+        resultMap.put("addrTopTen",addrTopTen);
+        resultMap.put("usernameTopTen",userTopTen);
+        resultMap.put("passwdTopTen",passTopTen);
+        return  resultMap;
+    }
+
 
     //返回trendboard四个圆圈数据
     public Map<String,Integer> getFourIntegers(){
