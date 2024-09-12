@@ -75,7 +75,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.example.fakessh.FakeSshApplication</mainClass>
-                    <skip>true</skip>
+                   <layout>JAR</layout>
                 </configuration>
                 <executions>
                     <execution>
