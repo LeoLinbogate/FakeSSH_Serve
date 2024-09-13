@@ -42,12 +42,12 @@ public class RecordController {
         updateTopData();
     }
 
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "1 0 0 * * ?")
     public void updateTopData(){
         topData  = recordService.getTopten();
         System.out.println("TopUpdated");
     }
-    @Scheduled(cron = "0 0 0 * * ?")
+    @Scheduled(cron = "1 0 0 * * ?")
     public void updateNumData(){
         numData  = recordService.getFourIntegers();
         System.out.println("NumUpdated");
